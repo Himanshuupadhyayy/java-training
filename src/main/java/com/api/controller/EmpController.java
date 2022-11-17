@@ -43,7 +43,7 @@ public class EmpController {
 	@GetMapping("/employees")
 	public ResponseEntity<List<Employee>> getAllEmployee(
 			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber, 
-			@RequestParam(value = "pageSize", defaultValue = "5", required = false) Integer pageSize,
+			@RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize,
 			@RequestParam(value = "sortBy", defaultValue = "name", required = false) String sortBy,
 			@RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir) {
 		List<Employee> emp = this.service.getAllEmployee(pageNumber, pageSize, sortBy, sortDir);
@@ -54,7 +54,7 @@ public class EmpController {
 	}
 
 	// delete a employee details
-	@DeleteMapping("/employee/{id}")
+	@DeleteMapping("/empDelete/{id}")
 	public ResponseEntity<Void> deleteEmployee(@PathVariable("id") int id) {
 		try {
 			this.service.deleteEmployee(id);
@@ -67,7 +67,7 @@ public class EmpController {
 	}
 
 	// for update the details of employee
-	@PutMapping("/employee/{id}")
+	@PutMapping("/empUpdate/{id}")
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee emp, @PathVariable("id") int id) {
 		try {
 			this.service.updateEmployee(emp, id);
@@ -80,7 +80,7 @@ public class EmpController {
 	}
 
 	// get student details by using the id
-	@GetMapping("/employe/{id}")
+	@GetMapping("/empid/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") int id) {
 		Employee emp = this.service.getEmployeeById(id);
 		if (emp == null) {
